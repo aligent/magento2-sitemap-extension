@@ -18,4 +18,18 @@
 
     <preference for="Magento\Sitemap\Model\Sitemap"
                 type="Aligent\Sitemap\Model\Sitemap" />
+
+    <type name="Magento\Sitemap\Model\ItemProvider\Composite">
+        <arguments>
+            <argument name="itemProviders" xsi:type="array">
+                <item name="pwaUrlProvider" xsi:type="object">Aligent\Sitemap\Model\ItemProvider\PwaUrl</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aligent\Sitemap\Model\ItemProvider\PwaUrl">
+        <arguments>
+            <argument name="configReader" xsi:type="object">Aligent\Sitemap\Model\ItemProvider\PwaUrlConfigReader</argument>
+        </arguments>
+    </type>
 </config>
