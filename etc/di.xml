@@ -15,4 +15,7 @@
         <plugin name="getValidProductPagesForSitemap"
                 type="Aligent\Sitemap\Plugin\Model\ResourceModel\Catalog\GetValidProductPagesForSitemap"/>
     </type>
+
+    <preference for="Magento\Sitemap\Model\Sitemap"
+                type="Aligent\Sitemap\Model\Sitemap" />
 </config>
