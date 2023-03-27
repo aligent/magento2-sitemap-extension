@@ -10,4 +10,9 @@
         <plugin name="getValidCategoryPagesForSitemap"
                 type="Aligent\Sitemap\Plugin\Model\ResourceModel\Catalog\GetValidCategoryPagesForSitemap"/>
     </type>
+
+    <type name="Magento\Sitemap\Model\ResourceModel\Catalog\Product">
+        <plugin name="getValidProductPagesForSitemap"
+                type="Aligent\Sitemap\Plugin\Model\ResourceModel\Catalog\GetValidProductPagesForSitemap"/>
+    </type>
 </config>
