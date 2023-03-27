@@ -362,9 +362,9 @@ class GetValidProductPagesForSitemap
             }
 
             /**
-             *  Check if the "Exclude Product Images from Sitemap" config value (line 245)
+             *  Check if the "Exclude Product Images from Sitemap" config value (line 369)
              *  If the value is Yes , restrict product images from sitemap
-             *  If the value is No , execute the default magento changes (line 246 - 254)
+             *  If the value is No , execute the default magento changes (line 370 - 374)
              */
             if (!$this->aligentSitemapConfig->isProductImagesExcludeEnabled((int)$storeId)) {
                 $product->setImages(
