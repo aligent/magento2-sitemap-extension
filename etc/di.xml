@@ -5,4 +5,9 @@
         <plugin name="getValidCmsPagesForSitemap"
                 type="Aligent\Sitemap\Plugin\Model\ResourceModel\Cms\Page\GetValidCmsPagesForSitemap"/>
     </type>
+
+    <type name="Magento\Sitemap\Model\ResourceModel\Catalog\Category">
+        <plugin name="getValidCategoryPagesForSitemap"
+                type="Aligent\Sitemap\Plugin\Model\ResourceModel\Catalog\GetValidCategoryPagesForSitemap"/>
+    </type>
 </config>
