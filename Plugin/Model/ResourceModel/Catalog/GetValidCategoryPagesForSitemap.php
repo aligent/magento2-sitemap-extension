@@ -45,7 +45,7 @@ class GetValidCategoryPagesForSitemap
     }
 
     /**
-     * Get category collection array
+     * Get category collection array for sitemap xml
      *
      * @param Category $subject
      * @param callable $proceed
@@ -59,10 +59,10 @@ class GetValidCategoryPagesForSitemap
     {
         /**
          *  Override changes for the Magento\Sitemap\Model\ResourceModel\Catalog\Category class
-         *  Check if the "Exclude Category Pages from Sitemap" config value (line 73)
-         *  If the value is Yes , include the show_in_sitemap category attribute to join condition (line 112-115)
-         *  and show_in_sitemap = 1  (line 120)
-         *  If the value is No , execute the default magento changes (line 75)
+         *  Check if the "Exclude Category Pages from Sitemap" config value (line 67)
+         *  If the value is Yes , include the show_in_sitemap category attribute to join condition (line 110-114)
+         *  and show_in_sitemap = 1  (line 117)
+         *  If the value is No , execute the default magento changes (line 68)
          */
         if (!$this->aligentSitemapConfig->isCategoryExcludeEnabled((int)$storeId)) {
             return $proceed($storeId);
