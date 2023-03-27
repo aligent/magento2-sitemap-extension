@@ -24,7 +24,7 @@ composer require aligent/magento2-sitemap-extension
 #### CMS Page Settings
     `Content -> Pages -> Edit -> Sitemap -> Show in Sitemap`.
 
-#### Required Step to exclude CMS Pages from Sitemap
+#### Required Steps to exclude CMS Pages from Sitemap
 
 - Set `Exclude CMS Pages from Sitemap` configuration field value to "Yes"
 - Set `Show in Sitemap` CMS page(s) value to "No"
@@ -37,7 +37,7 @@ composer require aligent/magento2-sitemap-extension
 #### Category Attribute Settings
     `Catalog -> Categories -> Sitemap -> Show in Sitemap`.
 
-#### Required Step to exclude Category Pages from Sitemap
+#### Required Steps to exclude Category Pages from Sitemap
 
 - Set `Exclude Category Pages from Sitemap` configuration field value to "Yes"
 - Set `Show in Sitemap` Category attribute value(s) to "No"
@@ -50,7 +50,7 @@ composer require aligent/magento2-sitemap-extension
 #### Product attribute Settings
     `Catalog -> Products -> Edit -> Search Engine Optimization  -> Show in Sitemap`.
 
-#### Required Step to exclude Product Pages from Sitemap
+#### Required Steps to exclude Product Pages from Sitemap
 
 - Set `Exclude Product Pages from Sitemap` configuration field value to "Yes"
 - Set `Show in Sitemap` Product attribute value(s) to "No"
@@ -61,7 +61,7 @@ composer require aligent/magento2-sitemap-extension
 #### Configurations
     `Stores -> Configuration -> Aligent -> Sitemap -> Exclude Product Images from Sitemap`.
 
-#### Required Step to exclude Product Images from Sitemap
+#### Required Steps to exclude Product Images from Sitemap
 
 - Set `Exclude Product Images from Sitemap` configuration field value to "Yes"
 
@@ -76,7 +76,7 @@ composer require aligent/magento2-sitemap-extension
     `Stores -> Configuration -> Aligent -> Sitemap -> PWA Pages Url Key`.
 
 
-#### Required Step to include custom PWA Pages to Sitemap
+#### Required Steps to include custom PWA Pages to Sitemap
 
 - Set `Include PWA Pages to Sitemap` configuration field value to "Yes"
 - Define url key's for PWA pages using `PWA Pages Url Key` configuration table
