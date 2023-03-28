@@ -32,8 +32,6 @@ use Aligent\Sitemap\Model\Config\Data as AligentSitemapConfig;
 
 class Sitemap extends MagentoSitemap
 {
-    private const CACHE_KEY = 'sitemap-base-url';
-
     /**
      * @param Context $context
      * @param Registry $registry
