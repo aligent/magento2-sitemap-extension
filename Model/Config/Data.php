@@ -39,7 +39,7 @@ class Data
      * @param int|null $storeId
      * @return bool
      */
-    public function isSitemapCustomizationEnabled(int $storeId = null): bool
+    public function isSitemapCustomizationEnabled(?int $storeId): bool
     {
         return $this->scopeConfig->isSetFlag(
             self::CONFIG_XML_PATH_SITEMAP_ENABLED,
@@ -54,9 +54,9 @@ class Data
      * @param int|null $storeId
      * @return bool
      */
-    public function isCmsPageExcludeEnabled(int $storeId = null): bool
+    public function isCmsPageExcludeEnabled(?int $storeId): bool
     {
-        if (!$this->isSitemapCustomizationEnabled()) {
+        if (!$this->isSitemapCustomizationEnabled($storeId)) {
             return false;
         }
         return $this->scopeConfig->isSetFlag(
@@ -72,9 +72,9 @@ class Data
      * @param int|null $storeId
      * @return bool
      */
-    public function isCategoryExcludeEnabled(int $storeId = null): bool
+    public function isCategoryExcludeEnabled(?int $storeId): bool
     {
-        if (!$this->isSitemapCustomizationEnabled()) {
+        if (!$this->isSitemapCustomizationEnabled($storeId)) {
             return false;
         }
         return $this->scopeConfig->isSetFlag(
@@ -90,9 +90,9 @@ class Data
      * @param int|null $storeId
      * @return bool
      */
-    public function isProductExcludeEnabled(int $storeId = null): bool
+    public function isProductExcludeEnabled(?int $storeId): bool
     {
-        if (!$this->isSitemapCustomizationEnabled()) {
+        if (!$this->isSitemapCustomizationEnabled($storeId)) {
             return false;
         }
         return $this->scopeConfig->isSetFlag(
@@ -108,9 +108,9 @@ class Data
      * @param int|null $storeId
      * @return bool
      */
-    public function isProductImagesExcludeEnabled(int $storeId = null): bool
+    public function isProductImagesExcludeEnabled(?int $storeId): bool
     {
-        if (!$this->isSitemapCustomizationEnabled()) {
+        if (!$this->isSitemapCustomizationEnabled($storeId)) {
             return false;
         }
         return $this->scopeConfig->isSetFlag(
@@ -126,9 +126,9 @@ class Data
      * @param int|null $storeId
      * @return bool
      */
-    public function isPwaPagesInclude(int $storeId = null): bool
+    public function isPwaPagesInclude(?int $storeId): bool
     {
-        if (!$this->isSitemapCustomizationEnabled()) {
+        if (!$this->isSitemapCustomizationEnabled($storeId)) {
             return false;
         }
         return $this->scopeConfig->isSetFlag(
@@ -144,9 +144,9 @@ class Data
      * @param int|null $storeId
      * @return string
      */
-    public function getSitemapBaseUrl(int $storeId = null): string
+    public function getSitemapBaseUrl(?int $storeId): string
     {
-        if (!$this->isSitemapCustomizationEnabled()) {
+        if (!$this->isSitemapCustomizationEnabled($storeId)) {
             return "";
         }
         return (string)$this->scopeConfig->getValue(
@@ -162,7 +162,7 @@ class Data
      * @param int|null $storeId
      * @return array
      */
-    public function getPwaPagesUrlKey(int $storeId = null): array
+    public function getPwaPagesUrlKey(?int $storeId): array
     {
         $pwaPagesUrlKey = [];
         $pwaPagesUrlKeyConfigValue = $this->scopeConfig
