@@ -19,6 +19,8 @@ use Zend_Validate_Exception;
 
 class AddShowInXmlSitemapCategoryAttribute implements DataPatchInterface
 {
+    private const ATTRIBUTE_CODE = 'show_in_sitemap';
+
     /**
      * @param ModuleDataSetupInterface $moduleDataSetup
      * @param EavSetup $eavSetup
@@ -63,22 +65,20 @@ class AddShowInXmlSitemapCategoryAttribute implements DataPatchInterface
             $attributeSetId
         );
 
-        foreach ($this->getShowInXmlSitemapCategoryAttributeConfiguration() as $code => $config) {
-            $sortOrder = $this->eavSetup->getAttributeSortOrder(
-                CategoryAttributeInterface::ENTITY_TYPE_CODE,
-                $attributeSetId,
-                $attributeGroupId
-            );
-            $config['sort_order'] = $sortOrder;
-            $config['group'] = $attributeGroupId;
+        $config = $this->getShowInXmlSitemapCategoryAttributeConfiguration()[self::ATTRIBUTE_CODE];
+        $sortOrder = $this->eavSetup->getAttributeSortOrder(
+            CategoryAttributeInterface::ENTITY_TYPE_CODE,
+            $attributeSetId,
+            $attributeGroupId
+        );
+        $config['sort_order'] = $sortOrder;
+        $config['group'] = $attributeGroupId;
 
-            $this->eavSetup->addAttribute(
-                CategoryAttributeInterface::ENTITY_TYPE_CODE,
-                $code,
-                $config
-            );
-
-        }
+        $this->eavSetup->addAttribute(
+            CategoryAttributeInterface::ENTITY_TYPE_CODE,
+            self::ATTRIBUTE_CODE,
+            $config
+        );
 
         $this->moduleDataSetup->endSetup();
 
@@ -93,7 +93,7 @@ class AddShowInXmlSitemapCategoryAttribute implements DataPatchInterface
     private function getShowInXmlSitemapCategoryAttributeConfiguration(): array
     {
         return [
-            'show_in_sitemap' => [
+            self::ATTRIBUTE_CODE => [
                 'type' => 'int',
                 'label' => 'Show in Sitemap',
                 'input' => 'boolean',
