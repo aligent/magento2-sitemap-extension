@@ -21,7 +21,7 @@ composer require aligent/magento2-sitemap-extension
 #### Configurations
     `Stores -> Configuration -> Aligent -> Sitemap -> Exclude CMS Pages from Sitemap`.
     
-[![Screenshot-from-2023-03-27-17-32-53.png](https://i.postimg.cc/RVVLT5gf/Screenshot-from-2023-03-27-17-32-53.png)](https://postimg.cc/4nqcJMkN)
+[![Screenshot-from-2023-03-27-17-32-20.png](https://i.postimg.cc/nr6dW3RB/Screenshot-from-2023-03-27-17-32-20.png)](https://postimg.cc/4HQb7QTx)
 
 
 #### CMS Page Settings
@@ -40,7 +40,7 @@ composer require aligent/magento2-sitemap-extension
 #### Configurations 
     `Stores -> Configuration -> Aligent -> Sitemap -> Exclude Category Pages from Sitemap`.
 
-[![Screenshot-from-2023-03-27-17-32-53.png](https://i.postimg.cc/RVVLT5gf/Screenshot-from-2023-03-27-17-32-53.png)](https://postimg.cc/4nqcJMkN)
+[![Screenshot-from-2023-03-27-17-32-20.png](https://i.postimg.cc/nr6dW3RB/Screenshot-from-2023-03-27-17-32-20.png)](https://postimg.cc/4HQb7QTx)
 
 #### Category Attribute Settings
     `Catalog -> Categories -> Sitemap -> Show in Sitemap`.
@@ -57,7 +57,7 @@ composer require aligent/magento2-sitemap-extension
 #### Configurations
     `Stores -> Configuration -> Aligent -> Sitemap -> Exclude Product Pages from Sitemap`.
 
-[![Screenshot-from-2023-03-27-17-32-53.png](https://i.postimg.cc/RVVLT5gf/Screenshot-from-2023-03-27-17-32-53.png)](https://postimg.cc/4nqcJMkN)
+[![Screenshot-from-2023-03-27-17-32-20.png](https://i.postimg.cc/nr6dW3RB/Screenshot-from-2023-03-27-17-32-20.png)](https://postimg.cc/4HQb7QTx)
 
 #### Product attribute Settings
     `Catalog -> Products -> Edit -> Search Engine Optimization  -> Show in Sitemap`.
@@ -76,7 +76,7 @@ composer require aligent/magento2-sitemap-extension
 #### Configurations
     `Stores -> Configuration -> Aligent -> Sitemap -> Exclude Product Images from Sitemap`.
 
-[![Screenshot-from-2023-03-27-17-32-53.png](https://i.postimg.cc/RVVLT5gf/Screenshot-from-2023-03-27-17-32-53.png)](https://postimg.cc/4nqcJMkN)
+[![Screenshot-from-2023-03-27-17-32-20.png](https://i.postimg.cc/nr6dW3RB/Screenshot-from-2023-03-27-17-32-20.png)](https://postimg.cc/4HQb7QTx)
 
 #### Required Steps to exclude Product Images from Sitemap
 
@@ -92,7 +92,7 @@ composer require aligent/magento2-sitemap-extension
 
     `Stores -> Configuration -> Aligent -> Sitemap -> PWA Pages Url Key`.
     
-[![Screenshot-from-2023-03-27-17-32-53.png](https://i.postimg.cc/RVVLT5gf/Screenshot-from-2023-03-27-17-32-53.png)](https://postimg.cc/4nqcJMkN)    
+[![Screenshot-from-2023-03-27-17-32-20.png](https://i.postimg.cc/nr6dW3RB/Screenshot-from-2023-03-27-17-32-20.png)](https://postimg.cc/4HQb7QTx)    
 
 #### Required Steps to include custom PWA Pages to Sitemap
 
