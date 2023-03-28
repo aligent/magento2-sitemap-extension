@@ -29,7 +29,6 @@ use Magento\Sitemap\Model\SitemapItemInterfaceFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Sitemap\Helper\Data as SitemapHelper;
 use Aligent\Sitemap\Model\Config\Data as AligentSitemapConfig;
-use Aligent\Sitemap\Model\Cache as SitemapCache;
 
 class Sitemap extends MagentoSitemap
 {
@@ -49,7 +48,6 @@ class Sitemap extends MagentoSitemap
      * @param RequestInterface $request
      * @param DateTime $dateTime
      * @param AligentSitemapConfig $aligentSitemapConfig
-     * @param Cache $sitemapCache
      * @param AbstractResource|null $resource
      * @param AbstractDb|null $resourceCollection
      * @param array $data
@@ -72,7 +70,6 @@ class Sitemap extends MagentoSitemap
         RequestInterface $request,
         DateTime $dateTime,
         private readonly AligentSitemapConfig $aligentSitemapConfig,
-        private readonly SitemapCache $sitemapCache,
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = [],
@@ -116,12 +113,7 @@ class Sitemap extends MagentoSitemap
      */
     protected function _getUrl($url, $type = UrlInterface::URL_TYPE_LINK)
     {
-        if ($this->sitemapCache->getCache(self::CACHE_KEY)) {
-            $sitemapBaseUrl = $this->sitemapCache->getCache(self::CACHE_KEY);
-        } else {
-            $sitemapBaseUrl = $this->aligentSitemapConfig->getSitemapBaseUrl();
-            $this->sitemapCache->storeCache(self::CACHE_KEY, $sitemapBaseUrl);
-        }
+        $sitemapBaseUrl = $this->aligentSitemapConfig->getSitemapBaseUrl();
         if ($sitemapBaseUrl) {
             return $sitemapBaseUrl . ltrim($url, '/');
         }
