@@ -134,7 +134,7 @@ class GetValidCategoryPagesForSitemap
      * @return array
      * @throws LocalizedException
      */
-    public function getAttributeDetails(string $attributeCode): array
+    private function getAttributeDetails(string $attributeCode): array
     {
         if (!isset($this->_attributesCache[$attributeCode])) {
             $attribute = $this->categoryResource->getAttribute($attributeCode);
