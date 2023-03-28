@@ -12,6 +12,7 @@ use Magento\Config\Model\Config\Reader\Source\Deployed\DocumentRoot;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Escaper;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
@@ -101,13 +102,14 @@ class Sitemap extends MagentoSitemap
 
     /**
      * Override changes for the Magento\Sitemap\Model\Sitemap class
-     * Check sitemap_base_url configuration is exists get the base url from configuration ( line 119 - 128)
-     * If not exists sitemap_base_url configuration , get the default magento base url (line 140)
+     * Check sitemap_base_url configuration is exists get the base url from configuration ( line 117 - 119)
+     * If not exists sitemap_base_url configuration , get the default magento base url (line 121)
      * Get url
      *
      * @param string $url
      * @param string $type
      * @return string
+     * @throws NoSuchEntityException
      */
     protected function _getUrl($url, $type = UrlInterface::URL_TYPE_LINK)
     {
