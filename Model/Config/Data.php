@@ -12,32 +12,20 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 
-class Data
+class Data implements ConfigReaderInterface
 {
-    private const CONFIG_XML_PATH_SITEMAP_ENABLED = 'aligent_sitemap/general/enabled';
-    private const CONFIG_XML_PATH_SITEMAP_EXCLUDE_CMS_PAGE = 'aligent_sitemap/general/exclude_cms_page';
-    private const CONFIG_XML_PATH_SITEMAP_EXCLUDE_CATEGORY = 'aligent_sitemap/general/exclude_category';
-    private const CONFIG_XML_PATH_SITEMAP_EXCLUDE_PRODUCT = 'aligent_sitemap/general/exclude_product';
-    private const CONFIG_XML_PATH_SITEMAP_EXCLUDE_PRODUCT_IMAGES = 'aligent_sitemap/general/exclude_product_images';
-    private const CONFIG_XML_PATH_SITEMAP_INCLUDE_PWA_PAGES = 'aligent_sitemap/general/include_pwa_pages';
-    private const CONFIG_XML_PATH_SITEMAP_BASE_URL = 'aligent_sitemap/general/sitemap_base_url';
-    private const CONFIG_XML_PATH_SITEMAP_PWA_PAGES_URL_KEY = 'aligent_sitemap/general/pwa_pages_url_key';
-
     /**
      * @param ScopeConfigInterface $scopeConfig
      * @param Json $serializer
      */
     public function __construct(
-        private readonly ScopeConfigInterface $scopeConfig,
-        private readonly Json $serializer
+        private ScopeConfigInterface $scopeConfig,
+        private Json $serializer
     ) {
     }
 
     /**
-     * Sitemap customization for the default sitemap enabled check
-     *
-     * @param int|null $storeId
-     * @return bool
+     * {@inheritdoc}
      */
     public function isSitemapCustomizationEnabled(?int $storeId): bool
     {
@@ -49,10 +37,7 @@ class Data
     }
 
     /**
-     * Enabled CMS Page Exclude from Sitemap Xml check
-     *
-     * @param int|null $storeId
-     * @return bool
+     * {@inheritdoc}
      */
     public function isCmsPageExcludeEnabled(?int $storeId): bool
     {
@@ -67,10 +52,7 @@ class Data
     }
 
     /**
-     * Enabled Category Exclude from Sitemap Xml check
-     *
-     * @param int|null $storeId
-     * @return bool
+     * {@inheritdoc}
      */
     public function isCategoryExcludeEnabled(?int $storeId): bool
     {
@@ -85,10 +67,7 @@ class Data
     }
 
     /**
-     * Enabled Product Exclude from Sitemap Xml check
-     *
-     * @param int|null $storeId
-     * @return bool
+     * {@inheritdoc}
      */
     public function isProductExcludeEnabled(?int $storeId): bool
     {
@@ -103,10 +82,7 @@ class Data
     }
 
     /**
-     * Enabled Product Images Exclude from Sitemap Xml check
-     *
-     * @param int|null $storeId
-     * @return bool
+     * {@inheritdoc}
      */
     public function isProductImagesExcludeEnabled(?int $storeId): bool
     {
@@ -121,10 +97,7 @@ class Data
     }
 
     /**
-     * Include PWA Pages to Sitemap Xml check
-     *
-     * @param int|null $storeId
-     * @return bool
+     * {@inheritdoc}
      */
     public function isPwaPagesInclude(?int $storeId): bool
     {
@@ -139,10 +112,7 @@ class Data
     }
 
     /**
-     * Get Sitemap Base Url
-     *
-     * @param int|null $storeId
-     * @return string
+     * {@inheritdoc}
      */
     public function getSitemapBaseUrl(?int $storeId): string
     {
@@ -157,10 +127,7 @@ class Data
     }
 
     /**
-     * Get PWA Pages Url Key
-     *
-     * @param int|null $storeId
-     * @return array
+     * {@inheritdoc}
      */
     public function getPwaPagesUrlKey(?int $storeId): array
     {

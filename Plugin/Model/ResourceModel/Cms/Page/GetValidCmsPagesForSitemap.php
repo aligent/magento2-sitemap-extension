@@ -12,7 +12,7 @@ use Magento\Cms\Api\Data\PageInterface;
 use Magento\Cms\Api\GetUtilityPageIdentifiersInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Zend_Db_Statement_Exception;
-use Aligent\Sitemap\Model\Config\Data as AligentSitemapConfig;
+use Aligent\Sitemap\Model\Config\ConfigReaderInterface as AligentSitemapConfigReaderInterface;
 use Magento\Sitemap\Model\ResourceModel\Cms\Page;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\DataObject;
@@ -22,13 +22,13 @@ class GetValidCmsPagesForSitemap
     /**
      * @param GetUtilityPageIdentifiersInterface $getUtilityPageIdentifiers
      * @param MetadataPool $metadataPool
-     * @param AligentSitemapConfig $aligentSitemapConfig
+     * @param AligentSitemapConfigReaderInterface $aligentSitemapConfig
      * @param Page $page
      */
     public function __construct(
         private readonly GetUtilityPageIdentifiersInterface $getUtilityPageIdentifiers,
         private readonly MetadataPool $metadataPool,
-        private readonly AligentSitemapConfig $aligentSitemapConfig,
+        private readonly AligentSitemapConfigReaderInterface $aligentSitemapConfig,
         private readonly Page $page
     ) {
     }

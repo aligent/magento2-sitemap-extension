@@ -24,7 +24,7 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Zend_Db_Statement_Exception;
-use Aligent\Sitemap\Model\Config\Data as AligentSitemapConfig;
+use Aligent\Sitemap\Model\Config\ConfigReaderInterface as AligentSitemapConfigReaderInterface;
 use Magento\Sitemap\Model\ResourceModel\Catalog\Product;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
@@ -35,7 +35,7 @@ class GetValidProductPagesForSitemap
     /**
      * Product constructor.
      *
-     * @param AligentSitemapConfig $aligentSitemapConfig
+     * @param AligentSitemapConfigReaderInterface $aligentSitemapConfig
      * @param ScopeConfigInterface $scopeConfig
      * @param StoreManagerInterface $storeManager
      * @param ProductResource $productResource
@@ -47,7 +47,7 @@ class GetValidProductPagesForSitemap
      * @param ReadHandler $mediaGalleryReadHandler
      */
     public function __construct(
-        private readonly AligentSitemapConfig $aligentSitemapConfig,
+        private readonly AligentSitemapConfigReaderInterface $aligentSitemapConfig,
         private readonly ScopeConfigInterface $scopeConfig,
         private readonly StoreManagerInterface $storeManager,
         private readonly ProductResource $productResource,

@@ -29,7 +29,7 @@ use Magento\Sitemap\Model\SitemapConfigReaderInterface;
 use Magento\Sitemap\Model\SitemapItemInterfaceFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Sitemap\Helper\Data as SitemapHelper;
-use Aligent\Sitemap\Model\Config\Data as AligentSitemapConfig;
+use Aligent\Sitemap\Model\Config\ConfigReaderInterface as AligentSitemapConfigReaderInterface;
 
 class Sitemap extends MagentoSitemap
 {
@@ -46,7 +46,7 @@ class Sitemap extends MagentoSitemap
      * @param StoreManagerInterface $storeManager
      * @param RequestInterface $request
      * @param DateTime $dateTime
-     * @param AligentSitemapConfig $aligentSitemapConfig
+     * @param AligentSitemapConfigReaderInterface $aligentSitemapConfig
      * @param AbstractResource|null $resource
      * @param AbstractDb|null $resourceCollection
      * @param array $data
@@ -68,7 +68,7 @@ class Sitemap extends MagentoSitemap
         StoreManagerInterface $storeManager,
         RequestInterface $request,
         DateTime $dateTime,
-        private readonly AligentSitemapConfig $aligentSitemapConfig,
+        private readonly AligentSitemapConfigReaderInterface $aligentSitemapConfig,
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = [],

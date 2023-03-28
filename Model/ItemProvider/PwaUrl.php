@@ -11,7 +11,7 @@ namespace Aligent\Sitemap\Model\ItemProvider;
 use Magento\Sitemap\Model\SitemapItemInterfaceFactory;
 use Magento\Sitemap\Model\ItemProvider\ItemProviderInterface;
 use Magento\Sitemap\Model\ItemProvider\ConfigReaderInterface;
-use Aligent\Sitemap\Model\Config\Data as AligentSitemapConfig;
+use Aligent\Sitemap\Model\Config\ConfigReaderInterface as AligentSitemapConfigReaderInterface;
 
 class PwaUrl implements ItemProviderInterface
 {
@@ -20,12 +20,12 @@ class PwaUrl implements ItemProviderInterface
      *
      * @param ConfigReaderInterface $configReader
      * @param SitemapItemInterfaceFactory $itemFactory
-     * @param AligentSitemapConfig $aligentSitemapConfig
+     * @param AligentSitemapConfigReaderInterface $aligentSitemapConfigReaderInterface
      */
     public function __construct(
         private readonly ConfigReaderInterface $configReader,
         private readonly SitemapItemInterfaceFactory $itemFactory,
-        private readonly AligentSitemapConfig $aligentSitemapConfig
+        private readonly AligentSitemapConfigReaderInterface $aligentSitemapConfigReaderInterface
     ) {
     }
 
@@ -35,8 +35,8 @@ class PwaUrl implements ItemProviderInterface
     public function getItems($storeId): array
     {
         $items = [];
-        if ($this->aligentSitemapConfig->isPwaPagesInclude((int)$storeId)) {
-            $pwaPagesUrlKeys = $this->aligentSitemapConfig->getPwaPagesUrlKey((int)$storeId);
+        if ($this->aligentSitemapConfigReaderInterface->isPwaPagesInclude((int)$storeId)) {
+            $pwaPagesUrlKeys = $this->aligentSitemapConfigReaderInterface->getPwaPagesUrlKey((int)$storeId);
             foreach ($pwaPagesUrlKeys as $pwaPagesUrlKey) {
                 $items[] = $this->itemFactory->create([
                     'url' => $pwaPagesUrlKey,
