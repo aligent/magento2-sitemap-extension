@@ -10,7 +10,7 @@ namespace Aligent\Sitemap\Block\System\Config\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field\FieldArray\AbstractFieldArray;
 
-class Fields extends AbstractFieldArray
+class UrlKeys extends AbstractFieldArray
 {
     /**
      * @var bool

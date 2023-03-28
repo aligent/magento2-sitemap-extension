@@ -64,7 +64,7 @@
                 </field>
                 <field id="pwa_pages_url_key" translate="label" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>PWA Pages Url Key</label>
-                    <frontend_model>Aligent\Sitemap\Block\System\Config\Form\Field\Fields</frontend_model>
+                    <frontend_model>Aligent\Sitemap\Block\System\Config\Form\Field\UrlKeys</frontend_model>
                     <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
                     <comment>Define PWA Page Url Keys</comment>
                     <depends>
