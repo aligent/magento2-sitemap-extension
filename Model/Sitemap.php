@@ -113,7 +113,8 @@ class Sitemap extends MagentoSitemap
      */
     protected function _getUrl($url, $type = UrlInterface::URL_TYPE_LINK)
     {
-        $sitemapBaseUrl = $this->aligentSitemapConfig->getSitemapBaseUrl();
+        $storeId = $this->_storeManager->getStore()->getId();
+        $sitemapBaseUrl = $this->aligentSitemapConfig->getSitemapBaseUrl((int)$storeId);
         if ($sitemapBaseUrl) {
             return $sitemapBaseUrl . ltrim($url, '/');
         }
