@@ -19,8 +19,8 @@ class Data implements ConfigReaderInterface
      * @param Json $serializer
      */
     public function __construct(
-        private ScopeConfigInterface $scopeConfig,
-        private Json $serializer
+        private readonly ScopeConfigInterface $scopeConfig,
+        private readonly Json $serializer
     ) {
     }
 
