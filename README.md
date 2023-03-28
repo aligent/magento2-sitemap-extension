@@ -20,7 +20,8 @@ composer require aligent/magento2-sitemap-extension
 
 #### Configurations
     `Stores -> Configuration -> Aligent -> Sitemap -> Exclude CMS Pages from Sitemap`.
-    ![Screenshot from 2023-03-27 17-32-20](https://user-images.githubusercontent.com/103980926/228108885-ddfec76a-2573-4c1a-b5bf-c59e2a7f05e5.png)
+    
+[![Screenshot-from-2023-03-27-17-32-53.png](https://i.postimg.cc/RVVLT5gf/Screenshot-from-2023-03-27-17-32-53.png)](https://postimg.cc/4nqcJMkN)
 
 
 #### CMS Page Settings
