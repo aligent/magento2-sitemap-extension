@@ -151,7 +151,7 @@ class GetValidProductPagesForSitemap
     /**
      * Return Use Categories Path for Product URLs config value
      *
-     * Overide due to getCollection function required this function, also this function is private visibility
+     * Override due to getCollection function required this function, also this function is private visibility
      *
      * @param int|null $storeId
      * @return bool
@@ -193,7 +193,7 @@ class GetValidProductPagesForSitemap
     /**
      * Add attribute to filter
      *
-     * Overide due to getCollection function required this function, also this function is protected visibility
+     * Override due to getCollection function required this function, also this function is protected visibility
      *
      * @param Product $subject
      * @param int $storeId
@@ -244,7 +244,7 @@ class GetValidProductPagesForSitemap
     /**
      * Join attribute by code
      *
-     * Overide due to getCollection function required this function, also this function is protected visibility
+     * Override due to getCollection function required this function, also this function is protected visibility
      *
      * @param Product $subject
      * @param int $storeId
@@ -298,7 +298,7 @@ class GetValidProductPagesForSitemap
     /**
      * Prepare product
      *
-     * Overide due to getCollection function required this function, also this function is protected visibility
+     * Override due to getCollection function required this function, also this function is protected visibility
      *
      * @param Product $subject
      * @param array $productRow
@@ -324,7 +324,7 @@ class GetValidProductPagesForSitemap
     /**
      * Load product images
      *
-     * Overide due to getCollection function required this function, also this function is protected visibility
+     * Override due to getCollection function required this function, also this function is protected visibility
      *
      * @param Product $subject
      * @param DataObject $product
@@ -379,7 +379,7 @@ class GetValidProductPagesForSitemap
     /**
      * Get all product images
      *
-     * Overide due to loadProductImages function required this function, also this function is protected visibility
+     * Override due to loadProductImages function required this function, also this function is protected visibility
      *
      * @param DataObject $product
      * @param int $storeId
@@ -411,7 +411,7 @@ class GetValidProductPagesForSitemap
     /**
      * Get product image URL from image filename
      *
-     * Overided due to loadProductImages function required this function, also this function is private visibility
+     * Override due to loadProductImages function required this function, also this function is private visibility
      *
      * @param string $image
      * @return string

@@ -155,7 +155,7 @@ class GetValidCategoryPagesForSitemap
     /**
      * Prepare category
      *
-     * Overide due to getCollection function required this function, also this function is protected visibility
+     * Override due to getCollection function required this function, also this function is protected visibility
      *
      * @param Category $subject
      * @param array $categoryRow
@@ -176,7 +176,7 @@ class GetValidCategoryPagesForSitemap
     /**
      * Add attribute to filter
      *
-     * Overide due to getCollection function required this function, also this function is protected visibility
+     * Override due to getCollection function required this function, also this function is protected visibility
      *
      * @param Category $subject
      * @param int $storeId
