@@ -25,7 +25,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function isSitemapCustomizationEnabled(?int $storeId): bool
     {
@@ -37,7 +37,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function isCmsPageExcludeEnabled(?int $storeId): bool
     {
@@ -52,7 +52,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function isCategoryExcludeEnabled(?int $storeId): bool
     {
@@ -67,7 +67,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function isProductExcludeEnabled(?int $storeId): bool
     {
@@ -82,7 +82,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function isProductImagesExcludeEnabled(?int $storeId): bool
     {
@@ -97,7 +97,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function isPwaPagesInclude(?int $storeId): bool
     {
@@ -112,7 +112,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getSitemapBaseUrl(?int $storeId): string
     {
@@ -127,7 +127,7 @@ class Data implements ConfigReaderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getPwaPagesUrlKey(?int $storeId): array
     {
