@@ -23,12 +23,18 @@ use Magento\Framework\DataObject;
 
 class GetValidCategoryPagesForSitemap
 {
+
+    /**
+     * @var Select
+     */
+    private $select = null;
+
     /**
      * Attribute cache
      *
      * @var array
      */
-    private $_attributesCache = [];
+    private $attributesCache = [];
 
     /**
      * @param AligentSitemapConfig $aligentSitemapConfig
@@ -85,20 +91,20 @@ class GetValidCategoryPagesForSitemap
         $showInSitemapAttributeDetails = $this->getAttributeDetails('show_in_sitemap');
 
         // phpcs:disable
-        $this->_select = $connection->select()->from(
+        $this->select = $connection->select()->from(
             $subject->getMainTable()
         )->where(
             $subject->getIdFieldName() . '=?',
             $store->getRootCategoryId()
         );
         // phpcs:enable
-        $categoryRow = $connection->fetchRow($this->_select);
+        $categoryRow = $connection->fetchRow($this->select);
 
         if (!$categoryRow) {
             return [];
         }
 
-        $this->_select = $connection->select()->from(
+        $this->select = $connection->select()->from(
             ['e' => $subject->getMainTable()],
             [$subject->getIdFieldName(), 'updated_at']
         )->joinLeft(
@@ -118,7 +124,7 @@ class GetValidCategoryPagesForSitemap
 
         $this->addFilter($subject, $storeId, 'is_active', 1);
 
-        $query = $connection->query($this->_select);
+        $query = $connection->query($this->select);
         while ($row = $query->fetch()) {
             $category = $this->prepareCategory($subject, $row);
             $categories[$category->getId()] = $category;
@@ -136,10 +142,10 @@ class GetValidCategoryPagesForSitemap
      */
     private function getAttributeDetails(string $attributeCode): array
     {
-        if (!isset($this->_attributesCache[$attributeCode])) {
+        if (!isset($this->attributesCache[$attributeCode])) {
             $attribute = $this->categoryResource->getAttribute($attributeCode);
 
-            $this->_attributesCache[$attributeCode] = [
+            $this->attributesCache[$attributeCode] = [
                 'entity_type_id' => $attribute->getEntityTypeId(),
                 'attribute_id' => $attribute->getId(),
                 'table' => $attribute->getBackend()->getTable(),
@@ -147,7 +153,7 @@ class GetValidCategoryPagesForSitemap
                 'backend_type' => $attribute->getBackendType(),
             ];
         }
-        $attribute = $this->_attributesCache[$attributeCode];
+        $attribute = $this->attributesCache[$attributeCode];
 
         return $attribute;
     }
@@ -191,7 +197,7 @@ class GetValidCategoryPagesForSitemap
         $meta = $this->metadataPool->getMetadata(CategoryInterface::class);
         $linkField = $meta->getLinkField();
 
-        if (!$this->_select instanceof Select) {
+        if (!$this->select instanceof Select) {
             return false;
         }
 
@@ -206,13 +212,12 @@ class GetValidCategoryPagesForSitemap
                 break;
             default:
                 return false;
-                break;
         }
 
         if ($attribute['backend_type'] == 'static') {
-            $this->_select->where('e.' . $attributeCode . $conditionRule, $value);
+            $this->select->where('e.' . $attributeCode . $conditionRule, $value);
         } else {
-            $this->_select->join(
+            $this->select->join(
                 ['t1_' . $attributeCode => $attribute['table']],
                 'e.' . $linkField . ' = t1_' . $attributeCode . '.' . $linkField .
                 ' AND t1_' . $attributeCode . '.store_id = 0',
@@ -223,14 +228,14 @@ class GetValidCategoryPagesForSitemap
             );
 
             if ($attribute['is_global']) {
-                $this->_select->where('t1_' . $attributeCode . '.value' . $conditionRule, $value);
+                $this->select->where('t1_' . $attributeCode . '.value' . $conditionRule, $value);
             } else {
                 $ifCase = $subject->getConnection()->getCheckSql(
                     't2_' . $attributeCode . '.value_id > 0',
                     't2_' . $attributeCode . '.value',
                     't1_' . $attributeCode . '.value'
                 );
-                $this->_select->joinLeft(
+                $this->select->joinLeft(
                     ['t2_' . $attributeCode => $attribute['table']],
                     $subject->getConnection()->quoteInto(
                         't1_' .
@@ -254,6 +259,6 @@ class GetValidCategoryPagesForSitemap
             }
         }
 
-        return $this->_select;
+        return $this->select;
     }
 }

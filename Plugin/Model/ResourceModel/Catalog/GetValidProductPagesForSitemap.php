@@ -33,6 +33,16 @@ use Magento\Sitemap\Helper\Data as SitemapData;
 class GetValidProductPagesForSitemap
 {
     /**
+     * @var Select
+     */
+    private $select = null;
+
+    /**
+     * @var array
+     */
+    private $attributesCache = null;
+
+    /**
      * Product constructor.
      *
      * @param AligentSitemapConfig $aligentSitemapConfig
@@ -102,7 +112,7 @@ class GetValidProductPagesForSitemap
         }
 
         $connection = $subject->getConnection();
-        $this->_select = $connection->select()->from(
+        $this->select = $connection->select()->from(
             ['e' => $subject->getMainTable()],
             [$subject->getIdFieldName(), $this->productResource->getLinkField(), 'updated_at']
         )->joinInner(
@@ -125,8 +135,20 @@ class GetValidProductPagesForSitemap
             $store->getWebsiteId()
         )->where('x.value = ?', 1);
 
-        $this->addFilter($subject, (int)$store->getId(), 'visibility', $this->productVisibility->getVisibleInSiteIds(), 'in');
-        $this->addFilter($subject, (int)$store->getId(), 'status', $this->productStatus->getVisibleStatusIds(), 'in');
+        $this->addFilter(
+            $subject,
+            (int)$store->getId(),
+            'visibility',
+            $this->productVisibility->getVisibleInSiteIds(),
+            'in'
+        );
+        $this->addFilter(
+            $subject,
+            (int)$store->getId(),
+            'status',
+            $this->productStatus->getVisibleStatusIds(),
+            'in'
+        );
 
         // Join product images required attributes
         $imageIncludePolicy = $this->sitemapData->getProductImageIncludePolicy($store->getId());
@@ -139,7 +161,7 @@ class GetValidProductPagesForSitemap
             }
         }
 
-        $query = $connection->query($subject->prepareSelectStatement($this->_select));
+        $query = $connection->query($subject->prepareSelectStatement($this->select));
         while ($row = $query->fetch()) {
             $product = $this->prepareProduct($subject, $row, (int)$store->getId());
             $products[$product->getId()] = $product;
@@ -174,10 +196,10 @@ class GetValidProductPagesForSitemap
      */
     private function getAttribute(string $attributeCode): array
     {
-        if (!isset($this->_attributesCache[$attributeCode])) {
+        if (!isset($this->attributesCache[$attributeCode])) {
             $attribute = $this->productResource->getAttribute($attributeCode);
 
-            $this->_attributesCache[$attributeCode] = [
+            $this->attributesCache[$attributeCode] = [
                 'entity_type_id' => $attribute->getEntityTypeId(),
                 'attribute_id' => $attribute->getId(),
                 'table' => $attribute->getBackend()->getTable(),
@@ -185,9 +207,7 @@ class GetValidProductPagesForSitemap
                 'backend_type' => $attribute->getBackendType(),
             ];
         }
-        $attribute = $this->_attributesCache[$attributeCode];
-
-        return $attribute;
+        return $this->attributesCache[$attributeCode];
     }
 
     /**
@@ -206,7 +226,7 @@ class GetValidProductPagesForSitemap
      */
     private function addFilter(Product $subject, int $storeId, string $attributeCode, mixed $value, string $type = '=')
     {
-        if (!$this->_select instanceof Select) {
+        if (!$this->select instanceof Select) {
             return false;
         }
 
@@ -223,22 +243,22 @@ class GetValidProductPagesForSitemap
 
         $attribute = $this->getAttribute($attributeCode);
         if ($attribute['backend_type'] == 'static') {
-            $this->_select->where('e.' . $attributeCode . $conditionRule, $value);
+            $this->select->where('e.' . $attributeCode . $conditionRule, $value);
         } else {
             $this->joinAttribute($subject, $storeId, $attributeCode);
             if ($attribute['is_global']) {
-                $this->_select->where('t1_' . $attributeCode . '.value' . $conditionRule, $value);
+                $this->select->where('t1_' . $attributeCode . '.value' . $conditionRule, $value);
             } else {
                 $ifCase = $subject->getConnection()->getCheckSql(
                     't2_' . $attributeCode . '.value_id > 0',
                     't2_' . $attributeCode . '.value',
                     't1_' . $attributeCode . '.value'
                 );
-                $this->_select->where('(' . $ifCase . ')' . $conditionRule, $value);
+                $this->select->where('(' . $ifCase . ')' . $conditionRule, $value);
             }
         }
 
-        return $this->_select;
+        return $this->select;
     }
 
     /**
@@ -260,7 +280,7 @@ class GetValidProductPagesForSitemap
         $attribute = $this->getAttribute($attributeCode);
         $linkField = $this->productResource->getLinkField();
         $attrTableAlias = 't1_' . $attributeCode;
-        $this->_select->joinLeft(
+        $this->select->joinLeft(
             [$attrTableAlias => $attribute['table']],
             "e.{$linkField} = {$attrTableAlias}.{$linkField}"
             . ' AND ' . $connection->quoteInto($attrTableAlias . '.store_id = ?', Store::DEFAULT_STORE_ID)
@@ -272,7 +292,7 @@ class GetValidProductPagesForSitemap
 
         if (!$attribute['is_global']) {
             $attrTableAlias2 = 't2_' . $attributeCode;
-            $this->_select->joinLeft(
+            $this->select->joinLeft(
                 ['t2_' . $attributeCode => $attribute['table']],
                 "{$attrTableAlias}.{$linkField} = {$attrTableAlias2}.{$linkField}"
                 . ' AND ' . $attrTableAlias . '.attribute_id = ' . $attrTableAlias2 . '.attribute_id'
@@ -281,13 +301,14 @@ class GetValidProductPagesForSitemap
             );
             // Store scope attribute value
             $columnValue = $subject->getConnection()->getIfNullSql(
-                't2_'  . $attributeCode . '.value', $columnValue
+                't2_'  . $attributeCode . '.value',
+                $columnValue
             );
         }
 
         // Add attribute value to result set if needed
         if (isset($column)) {
-            $this->_select->columns(
+            $this->select->columns(
                 [
                     $column => $columnValue
                 ]
