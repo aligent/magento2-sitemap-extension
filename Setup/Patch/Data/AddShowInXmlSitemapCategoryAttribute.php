@@ -12,10 +12,8 @@ use Magento\Catalog\Api\Data\CategoryAttributeInterface;
 use Magento\Eav\Model\Entity\Attribute\Source\Boolean;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetup;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Zend_Validate_Exception;
 
 class AddShowInXmlSitemapCategoryAttribute implements DataPatchInterface
 {
@@ -49,11 +47,10 @@ class AddShowInXmlSitemapCategoryAttribute implements DataPatchInterface
 
     /**
      * @inheritDoc
-     * @throws LocalizedException
-     * @throws Zend_Validate_Exception
      */
     public function apply(): AddShowInXmlSitemapCategoryAttribute
     {
+
         $this->moduleDataSetup->startSetup();
 
         $attributeSetId = $this->eavSetup->getDefaultAttributeSetId(
@@ -73,7 +70,6 @@ class AddShowInXmlSitemapCategoryAttribute implements DataPatchInterface
         );
         $config['sort_order'] = $sortOrder;
         $config['group'] = $attributeGroupId;
-
         $this->eavSetup->addAttribute(
             CategoryAttributeInterface::ENTITY_TYPE_CODE,
             self::ATTRIBUTE_CODE,

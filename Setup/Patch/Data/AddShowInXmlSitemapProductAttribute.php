@@ -15,7 +15,7 @@ use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Zend_Validate_Exception;
+use Magento\Framework\Validator\ValidateException;
 
 class AddShowInXmlSitemapProductAttribute implements DataPatchInterface
 {
@@ -49,9 +49,6 @@ class AddShowInXmlSitemapProductAttribute implements DataPatchInterface
 
     /**
      * @inheritDoc
-     * @return $this
-     * @throws LocalizedException
-     * @throws Zend_Validate_Exception
      */
     public function apply(): AddShowInXmlSitemapProductAttribute
     {
@@ -67,7 +64,7 @@ class AddShowInXmlSitemapProductAttribute implements DataPatchInterface
      *
      * @return void
      * @throws LocalizedException
-     * @throws Zend_Validate_Exception
+     * @throws ValidateException
      */
     private function addShowInXmlSitemap(): void
     {
