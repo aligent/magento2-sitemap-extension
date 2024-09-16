@@ -17,7 +17,7 @@ use Magento\Sitemap\Model\ResourceModel\Catalog\Category;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Catalog\Model\ResourceModel\Category as CategoryResource;
-use Aligent\Sitemap\Model\Config\Data as AligentSitemapConfig;
+use Aligent\Sitemap\Model\Config\ConfigReaderInterface as AligentSitemapConfigReaderInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\DataObject;
 
@@ -37,13 +37,13 @@ class GetValidCategoryPagesForSitemap
     private $attributesCache = [];
 
     /**
-     * @param AligentSitemapConfig $aligentSitemapConfig
+     * @param AligentSitemapConfigReaderInterface $aligentSitemapConfig
      * @param StoreManagerInterface $storeManager
      * @param CategoryResource $categoryResource
      * @param MetadataPool $metadataPool
      */
     public function __construct(
-        private readonly AligentSitemapConfig $aligentSitemapConfig,
+        private readonly AligentSitemapConfigReaderInterface $aligentSitemapConfig,
         private readonly StoreManagerInterface $storeManager,
         private readonly CategoryResource $categoryResource,
         private readonly MetadataPool $metadataPool
