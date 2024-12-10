@@ -7,9 +7,6 @@
         "magento/framework": "*",
         "magento/module-sitemap": "*"
     },
-    "require-dev": {
-        "magento/magento-coding-standard": ">=23"
-    },
     "type": "magento2-module",
     "autoload": {
         "files": [
