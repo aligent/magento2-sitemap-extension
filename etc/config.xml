@@ -5,6 +5,12 @@
             <general>
                 <enabled>1</enabled>
             </general>
+           <inventory_source>
+               <include_in_sitemap>1</include_in_sitemap>
+               <route_key>store-locator</route_key>
+               <change_frequency>daily</change_frequency>
+               <pirority>1.0</pirority>
+           </inventory_source>
        </aligent_sitemap>
     </default>
 </config>

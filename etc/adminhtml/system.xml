@@ -72,6 +72,33 @@
                     </depends>
                 </field>
             </group>
+
+            <group id="inventory_source" translate="label" type="text" sortOrder="1"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Inventory Source</label>
+                <field id="include_in_sitemap" translate="label comment" sortOrder="10" type="select"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Include In Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If this setting is Enabled Inventory Source URLs will be included to Sitemap</comment>
+                </field>
+                <field id="route_key" translate="label comment" sortOrder="11" type="text"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Route Key</label>
+                    <comment>Route Key for the inventory source URLs</comment>
+                </field>
+                <field id="change_frequency" translate="label comment" sortOrder="11" type="select"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Change Frequency</label>
+                    <source_model>Magento\Sitemap\Model\Config\Source\Frequency</source_model>
+                    <comment>Change frequence of the inventory source</comment>
+                </field>
+                <field id="pirority" translate="label comment" sortOrder="11" type="text"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Priority</label>
+                    <comment>Valid values range from 0.0 to 1.0.</comment>
+                </field>
+            </group>
         </section>
     </system>
 </config>

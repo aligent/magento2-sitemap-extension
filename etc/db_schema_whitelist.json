@@ -3,5 +3,10 @@
         "column": {
             "show_in_sitemap": true
         }
+    },
+    "inventory_source": {
+        "column": {
+            "show_in_sitemap": true
+        }
     }
 }
