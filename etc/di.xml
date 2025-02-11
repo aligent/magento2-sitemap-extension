@@ -32,4 +32,18 @@
             <argument name="configReader" xsi:type="object">Aligent\Sitemap\Model\ItemProvider\PwaUrlConfigReader</argument>
         </arguments>
     </type>
+
+    <type name="Magento\InventoryApi\Api\SourceRepositoryInterface">
+        <plugin name="plugin_source_save" type="Aligent\Sitemap\Plugin\Model\SourceSave"/>
+    </type>
+
+    <type name="Magento\Sitemap\Model\ItemProvider\Composite">
+        <arguments>
+            <argument name="itemProviders" xsi:type="array">
+                <item name="inventorySourceProvider" xsi:type="object">
+                    Aligent\Sitemap\Model\ItemProvider\InventorySource
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>

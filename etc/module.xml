@@ -4,6 +4,8 @@
     <module name="Aligent_Sitemap">
         <sequence>
             <module name="Magento_Sitemap"/>
+            <module name="Magento_Inventory"/>
+            <module name="Magento_InventoryApi"/>
         </sequence>
     </module>
 </config>
