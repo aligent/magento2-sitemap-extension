@@ -19,6 +19,9 @@
     <preference for="Magento\Sitemap\Model\Sitemap"
                 type="Aligent\Sitemap\Model\Sitemap" />
 
+    <preference for="Aligent\Sitemap\Model\Config\ConfigReaderInterface"
+                type="Aligent\Sitemap\Model\Config\Data" />
+
     <type name="Magento\Sitemap\Model\ItemProvider\Composite">
         <arguments>
             <argument name="itemProviders" xsi:type="array">
